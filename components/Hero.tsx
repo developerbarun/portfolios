@@ -212,7 +212,7 @@ export default function Hero() {
               <Github className="w-4 h-4" /> GitHub
             </a>
             <a
-              href="https://linkedin.com/in/barungupta"
+              href="https://www.linkedin.com/in/barun-kumar-gupta-68960a237/"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 rounded-full border border-border bg-surface/70 text-sm text-text-muted hover:text-primary hover:border-primary/60 transition-colors inline-flex items-center gap-2"

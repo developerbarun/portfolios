@@ -53,7 +53,7 @@ export default function Footer() {
     },
     {
       icon: Linkedin,
-      href: "https://linkedin.com/in/barungupta",
+      href: "https://www.linkedin.com/in/barun-kumar-gupta-68960a237/",
       label: "LinkedIn",
     },
     { icon: Twitter, href: "https://x.com/Barun_G18", label: "X" },
