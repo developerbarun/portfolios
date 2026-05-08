@@ -122,7 +122,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative pt-20 overflow-hidden hero-ambient-bg">
+    <section className="min-h-screen flex items-center justify-center relative pt-8 sm:pt-12 md:pt-16 lg:pt-20 overflow-hidden hero-ambient-bg">
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
           animate={{
@@ -131,7 +131,7 @@ export default function Hero() {
             scale: [1, 1.15, 0.95, 1],
           }}
           transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-44 -left-24 w-[28rem] h-[28rem] rounded-full bg-primary/25 blur-[90px]"
+          className="absolute -top-32 -left-16 sm:-top-40 sm:-left-20 md:-top-44 md:-left-24 w-[16rem] sm:w-[20rem] md:w-[28rem] h-[16rem] sm:h-[20rem] md:h-[28rem] rounded-full bg-primary/25 blur-[90px]"
         />
         <motion.div
           animate={{
@@ -140,7 +140,7 @@ export default function Hero() {
             scale: [1, 0.92, 1.08, 1],
           }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -bottom-56 -right-20 w-[30rem] h-[30rem] rounded-full bg-secondary/20 blur-[110px]"
+          className="absolute -bottom-40 -right-16 sm:-bottom-48 sm:-right-20 md:-bottom-56 md:-right-20 w-[18rem] sm:w-[22rem] md:w-[30rem] h-[18rem] sm:h-[22rem] md:h-[30rem] rounded-full bg-secondary/20 blur-[110px]"
         />
         <div className="absolute inset-0 hero-grid-overlay" />
       </div>
@@ -154,27 +154,28 @@ export default function Hero() {
         >
           <motion.div
             variants={itemVariants}
-            className="mb-7 flex justify-center gap-3 flex-wrap"
+            className="mb-7 flex justify-center gap-2 sm:gap-3 flex-wrap px-2"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-surface/90 border border-border rounded-full text-sm font-medium text-primary shadow-lg shadow-primary/10">
+            <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-surface/90 border border-border rounded-full text-xs sm:text-sm font-medium text-primary shadow-lg shadow-primary/10">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              Identity Verified: Barun Kumar Gupta
+              <span className="hidden sm:inline">Identity Verified:</span> Barun
+              Kumar Gupta
             </span>
-            <span className="inline-flex items-center px-4 py-2 bg-secondary/20 border border-secondary/40 rounded-full text-xs font-semibold tracking-wide text-secondary">
-              IMMEDIATELY AVAILABLE
+            <span className="inline-flex items-center px-3 sm:px-4 py-2 bg-secondary/20 border border-secondary/40 rounded-full text-xs font-semibold tracking-wide text-secondary">
+              AVAILABLE
             </span>
           </motion.div>
 
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-7xl lg:text-8xl font-clash font-bold mb-6 leading-[1.05]"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-clash font-bold mb-4 sm:mb-6 leading-[1.05] px-2"
           >
             The Next Gen <span className="gradient-text">Engineer</span>
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-2xl text-text-muted mb-8 max-w-3xl mx-auto"
+            className="text-base sm:text-lg md:text-2xl text-text-muted mb-6 sm:mb-8 max-w-3xl mx-auto px-3"
           >
             Crafting immersive digital experiences with clean code, reliable
             architecture, and product-first thinking.
@@ -182,7 +183,7 @@ export default function Hero() {
 
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-6 sm:mb-8 px-2"
           >
             <Link
               href="/projects"
@@ -201,46 +202,54 @@ export default function Hero() {
 
           <motion.div
             variants={itemVariants}
-            className="flex justify-center gap-3 mb-10 flex-wrap"
+            className="flex justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 flex-wrap px-2"
           >
             <a
               href="https://github.com/developerbarun"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-full border border-border bg-surface/70 text-sm text-text-muted hover:text-primary hover:border-primary/60 transition-colors inline-flex items-center gap-2"
+              className="px-3 sm:px-4 py-2 rounded-full border border-border bg-surface/70 text-xs sm:text-sm text-text-muted hover:text-primary hover:border-primary/60 transition-colors inline-flex items-center gap-1 sm:gap-2"
             >
-              <Github className="w-4 h-4" /> GitHub
+              <Github className="w-3.5 sm:w-4 h-3.5 sm:h-4" />{" "}
+              <span className="hidden sm:inline">GitHub</span>
+              <span className="sm:hidden">GH</span>
             </a>
             <a
               href="https://www.linkedin.com/in/barun-kumar-gupta-68960a237/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-full border border-border bg-surface/70 text-sm text-text-muted hover:text-primary hover:border-primary/60 transition-colors inline-flex items-center gap-2"
+              className="px-3 sm:px-4 py-2 rounded-full border border-border bg-surface/70 text-xs sm:text-sm text-text-muted hover:text-primary hover:border-primary/60 transition-colors inline-flex items-center gap-1 sm:gap-2"
             >
-              <Linkedin className="w-4 h-4" /> LinkedIn
+              <Linkedin className="w-3.5 sm:w-4 h-3.5 sm:h-4" />{" "}
+              <span className="hidden sm:inline">LinkedIn</span>
+              <span className="sm:hidden">LI</span>
             </a>
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-full border border-border bg-surface/70 text-sm text-text-muted hover:text-primary hover:border-primary/60 transition-colors inline-flex items-center gap-2"
+              className="px-3 sm:px-4 py-2 rounded-full border border-border bg-surface/70 text-xs sm:text-sm text-text-muted hover:text-primary hover:border-primary/60 transition-colors inline-flex items-center gap-1 sm:gap-2"
             >
-              <FileText className="w-4 h-4" /> Resume
+              <FileText className="w-3.5 sm:w-4 h-3.5 sm:h-4" />{" "}
+              <span className="hidden sm:inline">Resume</span>
+              <span className="sm:hidden">CV</span>
             </a>
           </motion.div>
 
           <motion.div
             variants={itemVariants}
-            className="max-w-3xl mx-auto mb-14"
+            className="max-w-3xl mx-auto mb-10 sm:mb-14 px-2"
           >
             <div
-              className="card-glass rounded-2xl overflow-hidden border-primary/20 text-left"
+              className="card-glass rounded-xl sm:rounded-2xl overflow-hidden border-primary/20 text-left"
               onClick={() => inputRef.current?.focus()}
             >
-              <div className="px-4 sm:px-6 py-3 border-b border-border flex items-center gap-3 text-sm text-text-muted">
-                <Terminal className="w-4 h-4 text-primary" /> Portfolio_CLI
+              <div className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 border-b border-border flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-text-muted">
+                <Terminal className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-primary" />{" "}
+                <span className="hidden sm:inline">Portfolio_CLI</span>
+                <span className="sm:hidden">CLI</span>
               </div>
-              <div className="px-4 sm:px-6 py-5 text-sm sm:text-base font-mono text-text-primary">
+              <div className="px-3 sm:px-4 md:px-6 py-3 sm:py-5 text-xs sm:text-sm md:text-base font-mono text-text-primary">
                 <div className="space-y-2 mb-3">
                   {cliLines.map((line, index) => (
                     <motion.p
