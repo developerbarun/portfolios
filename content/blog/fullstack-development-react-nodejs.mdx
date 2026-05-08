@@ -1,0 +1,137 @@
+---
+title: "Full Stack Development: From React to Node.js"
+date: "2024-10-28"
+author: "Barun Kumar Gupta"
+category: "Tech"
+tags: ["React", "Node.js", "Full Stack", "TypeScript"]
+excerpt: "Complete guide to full stack JavaScript development with React frontend and Node.js backend."
+readingTime: 6
+---
+
+# Full Stack Development: From React to Node.js
+
+Full stack development has become the industry standard, allowing developers to build complete applications from database to UI. In this guide, I'll share what I learned building Brainly, a digital knowledge organizer.
+
+## The Modern Full Stack
+
+The JavaScript/TypeScript ecosystem provides a cohesive development experience:
+
+- **Frontend**: React with TypeScript for type safety
+- **Backend**: Node.js with Express for API development
+- **Database**: MongoDB for flexible data models
+- **Tooling**: Same language across the stack
+
+## Frontend Architecture with React
+
+```typescript
+// components/useAsync.ts - Custom hook for async operations
+export const useAsync = <T,>(asyncFn: () => Promise<T>) => {
+  const [status, setStatus] = useState<'idle' | 'pending' | 'success' | 'error'>('idle');
+  const [data, setData] = useState<T | null>(null);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+    setStatus('pending');
+
+    asyncFn()
+      .then(response => {
+        if (mounted) {
+          setData(response);
+          setStatus('success');
+        }
+      })
+      .catch(error => {
+        if (mounted) {
+          setError(error);
+          setStatus('error');
+        }
+      });
+
+    return () => { mounted = false; };
+  }, [asyncFn]);
+
+  return { status, data, error };
+};
+```
+
+## Backend with Express and TypeScript
+
+```typescript
+// routes/articles.ts
+import { Router, Request, Response } from 'express';
+import { Article } from '../models/Article';
+
+const router = Router();
+
+router.post('/save', async (req: Request, res: Response) => {
+  try {
+    const { url, title, description, tags } = req.body;
+    
+    const article = new Article({
+      url,
+      title,
+      description,
+      tags,
+      userId: req.user?.id,
+      savedAt: new Date(),
+    });
+
+    await article.save();
+    res.json({ success: true, article });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to save article' });
+  }
+});
+
+router.get('/search', async (req: Request, res: Response) => {
+  const { q } = req.query;
+  const articles = await Article.find({
+    $text: { $search: q as string },
+    userId: req.user?.id,
+  });
+  res.json(articles);
+});
+
+export default router;
+```
+
+## Database Design with MongoDB
+
+```typescript
+// models/Article.ts
+import { Schema, model } from 'mongoose';
+
+const articleSchema = new Schema({
+  url: { type: String, required: true },
+  title: String,
+  description: String,
+  tags: [String],
+  userId: { type: Schema.Types.ObjectId, ref: 'User' },
+  savedAt: { type: Date, default: Date.now },
+});
+
+articleSchema.index({ title: 'text', description: 'text' });
+
+export const Article = model('Article', articleSchema);
+```
+
+## API Best Practices
+
+1. **Consistent Error Handling**
+2. **Input Validation** with zod or joi
+3. **Authentication** with JWT tokens
+4. **Rate Limiting** to prevent abuse
+5. **CORS** configuration for security
+
+## Lessons Learned
+
+Building Brainly taught me that:
+- Type safety with TypeScript prevents bugs early
+- Proper API design makes frontend development faster
+- Database indexing is crucial for search features
+- Error handling must be comprehensive
+
+## Next Steps
+
+Start building! Choose a simple project and gradually add complexity. Full stack development is a journey of continuous learning.

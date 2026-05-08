@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-text-primary font-inter;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-clash;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .button-primary {
+    @apply bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200;
+  }
+
+  .button-secondary {
+    @apply bg-surface border border-border hover:bg-border text-text-primary px-6 py-3 rounded-lg font-medium transition-colors duration-200;
+  }
+
+  .button-accent {
+    @apply bg-secondary hover:bg-secondary/90 text-black px-6 py-3 rounded-lg font-medium transition-colors duration-200;
+  }
+
+  .card-glass {
+    @apply bg-surface/40 backdrop-blur-xs border border-border rounded-xl;
+  }
+
+  .nav-blur {
+    @apply bg-background/80 backdrop-blur-md border-b border-border/50;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  .glow-effect {
+    @apply shadow-lg shadow-primary/20;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent;
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .transition-smooth {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Smooth page transitions */
+@supports (animation-timeline: view()) {
+  .scroll-reveal {
+    animation: slide-up 0.6s ease-out forwards;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+}
+
+/* Particle animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-ambient-bg {
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(124, 58, 237, 0.1),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      rgba(245, 158, 11, 0.09),
+      transparent 42%
+    ),
+    #0d0f14;
+}
+
+.hero-grid-overlay {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 38px 38px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 80%);
+}
+
+.terminal-cursor {
+  animation: terminal-blink 1s steps(1, end) infinite;
+}
+
+.signal-strip {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  border-radius: 999px;
+  background: rgba(21, 23, 32, 0.7);
+  backdrop-filter: blur(3px);
+}
+
+.signal-track {
+  display: flex;
+  width: max-content;
+  animation: signal-marquee 18s linear infinite;
+}
+
+.signal-text {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  color: #f59e0b;
+  opacity: 0.85;
+  white-space: nowrap;
+  padding: 0.55rem 1.2rem;
+}
+
+@keyframes terminal-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes signal-marquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-grid-overlay {
+    background-size: 26px 26px;
+  }
+
+  .signal-text {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+/* Blog content styling */
+article h2 {
+  @apply text-2xl font-clash font-bold mt-8 mb-4 text-text-primary;
+}
+
+article h3 {
+  @apply text-xl font-clash font-bold mt-6 mb-3 text-text-primary;
+}
+
+article p {
+  @apply text-text-muted leading-relaxed mb-4;
+}
+
+article ul {
+  @apply list-disc list-inside space-y-2 mb-4 text-text-muted;
+}
+
+article li {
+  @apply text-text-muted;
+}
